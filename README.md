@@ -11,6 +11,10 @@ The rental documents summarise Dubai rules for training only. Not legal advice.
 Run them in order. Each opens in Colab from the link; the first cell downloads the code and asks
 you to sign in to Azure with a code.
 
+**Recommended: the whole workshop in one notebook (sign in once):** [Open in Colab](https://colab.research.google.com/github/NetwaysPresales/dld-foundry-workshop/blob/main/workshop/DLD_Foundry_Workshop.ipynb)
+
+Or chapter by chapter (each asks you to sign in):
+
 | Notebook | Open |
 |---|---|
 | 00 Workshop Environment | [Open in Colab](https://colab.research.google.com/github/NetwaysPresales/dld-foundry-workshop/blob/main/workshop/00_Workshop_Environment.ipynb) |
