@@ -1,0 +1,24 @@
+DLD RENTAL SERVICES - RENT INCREASE RULES (WORKSHOP SUMMARY)
+Document ID: RNT-LAW-001
+Based on: Decree No. 43 of 2013 Determining Rent Increase for Real Property in the Emirate of Dubai
+Classification: Workshop summary of Dubai legislation. Not legal advice. The official Arabic text prevails.
+
+1. When the rules apply
+The rent increase caps apply when an existing lease contract is renewed. They apply to all landlords in Dubai, private or public, including landlords in special development zones and free zones such as the Dubai International Financial Centre.
+
+2. How the maximum increase is decided
+Compare the current rent of the unit with the average rental value of similar units. The average rental value is the figure in the Rent Index of the Emirate of Dubai approved by the Real Estate Regulatory Agency (RERA). The further the current rent is below the average, the larger the increase the landlord may ask for.
+
+3. Maximum increase bands
+If the current rent is up to 10% below the average rental value: no increase is allowed.
+If the current rent is 11% to 20% below the average rental value: the maximum increase is 5% of the current rent.
+If the current rent is 21% to 30% below the average rental value: the maximum increase is 10% of the current rent.
+If the current rent is 31% to 40% below the average rental value: the maximum increase is 15% of the current rent.
+If the current rent is more than 40% below the average rental value: the maximum increase is 20% of the current rent.
+If the current rent is equal to or higher than the average rental value, no increase is allowed.
+
+4. Worked example
+Current annual rent AED 80,000. Average rental value for similar units AED 100,000. The rent is 20% below the average, so the maximum increase is 5%, which is AED 4,000. A requested increase of 15% (AED 12,000) exceeds the cap.
+
+5. Where tenants find the average
+Tenants and landlords can check the average rental value with the official DLD Rental Index calculator on the Dubai Land Department website or the Dubai REST app. Staff must not estimate the average rental value themselves.

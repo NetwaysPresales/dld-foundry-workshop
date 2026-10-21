@@ -1,0 +1,15 @@
+services:
+  dld-rental-manager:
+    host: azure.ai.agent
+    project: .
+    kind: hosted
+    docker:
+      path: Dockerfile
+      remoteBuild: true
+    protocols:
+      - responses
+    env:
+      AZURE_AI_MODEL_DEPLOYMENT_NAME: gpt-5.4-mini
+      WORKSHOP_STORAGE_ACCOUNT: ${AZURE_STORAGE_ACCOUNT_NAME}
+      WORKSHOP_FOUNDRY_ACCOUNT: ${AZURE_AI_ACCOUNT_NAME}
+      RULES_AGENT: DLD-Rental-Rules

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dld-foundry-workshop"
+version = "0.2.0"
+description = "Synthetic DLD property-service workshop for Microsoft Foundry"
+requires-python = ">=3.10"
+dependencies = [
+    "azure-ai-projects>=2.9,<3",
+    "azure-identity>=1.26,<2",
+    "azure-mgmt-authorization>=4,<5",
+    "azure-mgmt-resource>=24,<25",
+    "azure-search-documents==12.1.0b2",
+    "azure-storage-blob>=12,<13",
+    "openai>=3.35,<4",
+    "pandas>=2",
+    "jinja2>=3",
+    "requests>=2.31,<3",
+]
+
+[tool.setuptools.packages.find]
+include = ["dld_workshop*"]

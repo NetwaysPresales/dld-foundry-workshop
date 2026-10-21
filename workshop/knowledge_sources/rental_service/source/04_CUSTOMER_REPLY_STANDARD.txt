@@ -1,0 +1,19 @@
+DLD RENTAL SERVICES - CUSTOMER REPLY STANDARD
+Document ID: RNT-PRC-004
+Version: 2.0
+Classification: Synthetic workshop procedure; not an official DLD policy
+
+1. Required structure
+A reply to a rent enquiry must: thank the customer, restate the question in one sentence, explain the applicable rule with its source, state what the customer should check or provide, offer a mediation information appointment when it applies, and close with the approved closing sentence.
+
+2. Accuracy
+State the maximum allowed increase only as a rule ("if your rent is 20% below the average, the maximum increase is 5%"). Do not calculate a final figure unless the customer gave both the current rent and the official average rental value. Do not guess the average rental value.
+
+3. No legal advice
+Do not promise the outcome of a dispute. Do not tell the customer to stop paying rent or to refuse to leave. Refer disputes to the Rental Disputes Settlement Centre.
+
+4. Approved closing sentence
+"This reply explains the general rules and is not legal advice. For a binding decision, the Rental Disputes Settlement Centre at the Dubai Land Department can help."
+
+5. Tone and length
+Plain, respectful English. At most 200 words.
