@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
+import time
 from typing import Any
 
 import requests
@@ -293,6 +294,7 @@ class WorkshopEnvironment:
                 parameters=parameters,
             )
         )
+        self._wait_for_running_deployment()
         result = self.resources.deployments.begin_create_or_update(
             self.settings.resource_group,
             DEPLOYMENT_NAME,
@@ -301,6 +303,24 @@ class WorkshopEnvironment:
         _apply_outputs(self.settings, result.properties.outputs or {})
         self.settings.container_registry_name = f"dldacr{self.settings.suffix.lower()}"
         return self.settings
+
+    def _wait_for_running_deployment(self, poll_seconds: int = 20) -> None:
+        """If an earlier run's build is still going (for example the cell was re-run), wait for it."""
+        while True:
+            try:
+                current = self.resources.deployments.get(self.settings.resource_group, DEPLOYMENT_NAME)
+            except Exception:
+                return  # no earlier build
+            state = current.properties.provisioning_state
+            if state not in ("Accepted", "Running", "Deploying", "Waiting", "Validating"):
+                return
+            pending = [
+                op.properties.target_resource.resource_name
+                for op in self.resources.deployment_operations.list(self.settings.resource_group, DEPLOYMENT_NAME)
+                if op.properties.target_resource and op.properties.provisioning_state != "Succeeded"
+            ]
+            print(f"An earlier build is still running ({state}); waiting for: {', '.join(pending) or 'Azure'}")
+            time.sleep(poll_seconds)
 
     def delete(self, confirmation: str) -> None:
         if confirmation != self.settings.resource_group:
