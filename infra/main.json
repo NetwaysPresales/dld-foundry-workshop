@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.46.1.21595",
-      "templateHash": "2590074014350948053"
+      "templateHash": "10407374530278569892"
     }
   },
   "parameters": {
@@ -77,6 +77,7 @@
     "storageName": "[take(format('dlddata{0}', variables('normalizedSuffix')), 24)]",
     "logName": "[format('dld-workshop-logs-{0}', variables('normalizedSuffix'))]",
     "insightsName": "[format('dld-workshop-ai-{0}', variables('normalizedSuffix'))]",
+    "agent365Audience": "ea9ffc3e-8a23-4a7d-836d-234d7c7565c1",
     "foundryUserRole": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '53ca6127-db72-4b80-b1b0-d745d6d5456d')]",
     "cognitiveServicesUserRole": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'a97b65f3-24c7-4388-baec-2e87135dc908')]",
     "searchServiceContributorRole": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7ca78c08-252a-4471-8644-bb5ff32d4ba0')]",
@@ -432,6 +433,42 @@
       "dependsOn": [
         "[resourceId('Microsoft.CognitiveServices/accounts/projects', variables('foundryName'), variables('projectName'))]",
         "[resourceId('Microsoft.Search/searchServices', variables('searchName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts/projects/connections",
+      "apiVersion": "2025-10-01-preview",
+      "name": "[format('{0}/{1}/{2}', variables('foundryName'), variables('projectName'), 'WorkIQMail')]",
+      "properties": {
+        "category": "RemoteTool",
+        "authType": "UserEntraToken",
+        "target": "https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools",
+        "audience": "[variables('agent365Audience')]",
+        "isSharedToAll": true,
+        "metadata": {
+          "ApiType": "Azure"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts/projects', variables('foundryName'), variables('projectName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts/projects/connections",
+      "apiVersion": "2025-10-01-preview",
+      "name": "[format('{0}/{1}/{2}', variables('foundryName'), variables('projectName'), 'WorkIQCalendar')]",
+      "properties": {
+        "category": "RemoteTool",
+        "authType": "UserEntraToken",
+        "target": "https://agent365.svc.cloud.microsoft/agents/servers/mcp_CalendarTools",
+        "audience": "[variables('agent365Audience')]",
+        "isSharedToAll": true,
+        "metadata": {
+          "ApiType": "Azure"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts/projects', variables('foundryName'), variables('projectName'))]"
       ]
     },
     {

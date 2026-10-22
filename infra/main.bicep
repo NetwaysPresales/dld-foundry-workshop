@@ -352,6 +352,40 @@ resource searchConnection 'Microsoft.CognitiveServices/accounts/projects/connect
   }
 }
 
+// Microsoft 365 MCP tools use Entra passthrough: the calling user's token reaches Mail/Calendar.
+// The connection resources can be automated; no secret, app registration or shared service account.
+var agent365Audience = 'ea9ffc3e-8a23-4a7d-836d-234d7c7565c1'
+
+resource workIqMailConnection 'Microsoft.CognitiveServices/accounts/projects/connections@2025-10-01-preview' = {
+  parent: project
+  name: 'WorkIQMail'
+  properties: {
+    category: 'RemoteTool'
+    authType: 'UserEntraToken'
+    target: 'https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools'
+    audience: agent365Audience
+    isSharedToAll: true
+    metadata: {
+      ApiType: 'Azure'
+    }
+  }
+}
+
+resource workIqCalendarConnection 'Microsoft.CognitiveServices/accounts/projects/connections@2025-10-01-preview' = {
+  parent: project
+  name: 'WorkIQCalendar'
+  properties: {
+    category: 'RemoteTool'
+    authType: 'UserEntraToken'
+    target: 'https://agent365.svc.cloud.microsoft/agents/servers/mcp_CalendarTools'
+    audience: agent365Audience
+    isSharedToAll: true
+    metadata: {
+      ApiType: 'Azure'
+    }
+  }
+}
+
 // Connecting Application Insights to the project enables Foundry tracing and hosted-agent telemetry.
 resource insightsConnection 'Microsoft.CognitiveServices/accounts/projects/connections@2025-06-01' = {
   parent: project
