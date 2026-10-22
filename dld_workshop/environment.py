@@ -302,7 +302,23 @@ class WorkshopEnvironment:
         ).result()
         _apply_outputs(self.settings, result.properties.outputs or {})
         self.settings.container_registry_name = f"dldacr{self.settings.suffix.lower()}"
+        self._wait_for_project_ready()
         return self.settings
+
+    def _wait_for_project_ready(self, timeout_seconds: int = 600, poll_seconds: int = 15) -> None:
+        """A brand-new Foundry project can answer 'Project not found' for a few minutes; wait until it responds."""
+        from azure.ai.projects import AIProjectClient
+
+        deadline = time.time() + timeout_seconds
+        while True:
+            try:
+                list(AIProjectClient(self.settings.project_endpoint, self.credential).connections.list())
+                return
+            except Exception as error:
+                if time.time() > deadline:
+                    raise TimeoutError(f"The Foundry project didn't become ready in time: {error}") from error
+                print("Waiting for the new Foundry project to come online...")
+                time.sleep(poll_seconds)
 
     def _wait_for_running_deployment(self, poll_seconds: int = 20) -> None:
         """If an earlier run's build is still going (for example the cell was re-run), wait for it."""
